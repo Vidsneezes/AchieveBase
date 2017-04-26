@@ -4,25 +4,44 @@ using System.Collections.Generic;
 public static class AchieveBase  {
 
     private static bool init = false;
-    private static VariableDatabase variableDatabase;
+    private static VariableDatabase<ExFloat> floatDatabase;
+    private static VariableDatabase<ExInt> intDatabase;
+    private static VariableDatabase<ExBool> boolDatabase;
+
 
     public static void Init()
     {
         init = true;
-        variableDatabase = new VariableDatabase();
+        floatDatabase = new VariableDatabase<ExFloat>();
+        intDatabase = new VariableDatabase<ExInt>();
+        boolDatabase = new VariableDatabase<ExBool>();
     }
 
-    public static bool GetVariable(string variableName, out BaseVariable variable)
+    public static void SetFloat(string variableName, float newValue, bool relative = false)
     {
-        if(!init)
+        ExFloat value;
+        if(floatDatabase.GetVariable(variableName,out value))
         {
-            Init();
+            if(relative == true)
+            {
+                value.Set(value.shallowValue + newValue);
+            }else
+            {
+                value.Set(newValue);
+            }
+            floatDatabase.SetVariable(variableName, value);
         }
+    }
 
-        if(variableDatabase.GetVariable(variableName,out variable))
+    public static bool GetFloat(string variableName, out float value)
+    {
+        ExFloat valueX;
+        if(floatDatabase.GetVariable(variableName,out valueX))
         {
+            value = valueX.value;
             return true;
         }
+        value = 0;
         return false;
     }
 

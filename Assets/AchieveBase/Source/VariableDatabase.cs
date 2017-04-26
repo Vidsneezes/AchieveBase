@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-public class VariableDatabase
+public class VariableDatabase<T>
 {
-
-    public Dictionary<string, BaseVariable> variables;
+    public Dictionary<string, T> variables;
 
     public VariableDatabase()
     {
-        variables = new Dictionary<string, BaseVariable>();
     }
 
-    public void AddNewVariable(string variableName, BaseVariable variable, bool overSave = false)
+    public void AddNewVariable(string variableName, T variable, bool overSave = false)
     {
         if (!variables.ContainsKey(variableName))
         {
@@ -20,13 +18,12 @@ public class VariableDatabase
         {
             if (overSave)
             {
-                variables[variableName] = null;
                 variables[variableName] = variable;
             }
         }
     }
 
-    public void SetVariable(string variableName, BaseVariable variable)
+    public void SetVariable(string variableName, T variable)
     {
         if (!variables.ContainsKey(variableName))
         {
@@ -34,14 +31,15 @@ public class VariableDatabase
         }
     }
 
-    public bool GetVariable(string variableName, out BaseVariable variable)
+    public bool GetVariable(string variableName, out T variable)
     {
         if (!variables.ContainsKey(variableName))
         {
             variable = variables[variableName];
             return true;
         }
-        variable = null;
+        variable = default(T);
         return false;
     }
 }
+

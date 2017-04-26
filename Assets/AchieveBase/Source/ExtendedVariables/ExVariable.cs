@@ -69,6 +69,21 @@ public class ExVariable<T>: BaseVariable{
 }
 
 
+public class ExInt : ExVariable<int>
+{
+
+}
+
+public class ExFloat : ExVariable<float>
+{
+
+}
+
+public class ExBool : ExVariable<bool>
+{
+
+}
+
 public enum ExTypes
 {
     Float,

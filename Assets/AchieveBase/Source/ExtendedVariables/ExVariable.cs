@@ -40,6 +40,16 @@ public class ExVariable<T>{
         _shallowValue = newValue;
     }
 
+    public virtual void IsEqual(T otherValue)
+    {
+
+    }
+
+    public virtual int ValueDifference(T otherValue)
+    {
+        return 0;
+    }
+
 }
 
 

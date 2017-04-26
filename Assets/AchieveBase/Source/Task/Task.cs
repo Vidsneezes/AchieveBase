@@ -3,7 +3,7 @@
 public class Task<T> : ITask {
     public string Title;
     public string description;
-    public TaskCondition<T> taskCondition;
+    public ExVariable<T> taskCondition;
 
     public bool ClearConditionChecked()
     {
@@ -16,7 +16,7 @@ public struct TaskCondition<T>
 {
     public string valueToCheck;
     public Comparors compareType;
-    public T expectedValue;
+    public ExVariable<T> expectedValue;
 }
 
 public enum Comparors

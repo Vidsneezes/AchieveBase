@@ -1,8 +1,15 @@
 ﻿using System;
 
-public class Task {
+public class Task<T> : ITask {
     public string Title;
     public string description;
+    public TaskCondition<T> taskCondition;
+
+    public bool ClearConditionChecked()
+    {
+        //here call variable database and check value against task condition
+        return false;
+    }
 }
 
 public struct TaskCondition<T>

@@ -1,13 +1,13 @@
 ﻿using System;
 
-public class Task<T> : ITask {
+public class Task<T>  {
     public string uniqueId;
     public string Title;
     public string description;
     public ConditionBuilder<T> conditionBuilder;
     private IGeneralCondition generalCondition;
 
-    public bool ClearConditionChecked()
+    public void ClearConditionChecked()
     {
         if(conditionBuilder.exType == ExTypes.Float)
         {
@@ -20,7 +20,17 @@ public class Task<T> : ITask {
             generalCondition = new IntCondition();
         }
         //here call variable database and check value against task condition
-        return generalCondition.ConditionMet();
+        if (generalCondition.ConditionMet())
+        {
+
+        }
+    }
+
+    public void SubsrcibeToVariable()
+    {
+        //Call variable database here
+        ExVariable<T> variableTo = new ExVariable<T>();//delete this and us a call method
+        variableTo.SubscribeAction(ClearConditionChecked);
     }
 }
 

@@ -1,6 +1,19 @@
 ﻿using System;
 
-public class ExVariable<T>{
+public class BaseVariable
+{
+    public Action onValueChange;
+    public string variableName;
+    public string uniqueId;
+
+
+    public void SubscribeAction(Action action)
+    {
+        onValueChange += action;
+    }
+}
+
+public class ExVariable<T>: BaseVariable{
 
     private T _value;
     public T value
@@ -20,7 +33,6 @@ public class ExVariable<T>{
             return _shallowValue;
         }
     }
-    public Action onValueChange;
 
     /// <summary>
     /// Applies a value, this value is permenant and will inovke the callback

@@ -1,9 +1,18 @@
 ﻿using System;
 
+public enum TaskState
+{
+    ACTIVE,
+    LOCKED,
+    UNLOCKED,
+    CLEARED
+}
+
 public class Task<T>  {
     public string uniqueId;
     public string Title;
     public string description;
+    public TaskState state;
     public ConditionBuilder<T> conditionBuilder;
     private IGeneralCondition generalCondition;
 

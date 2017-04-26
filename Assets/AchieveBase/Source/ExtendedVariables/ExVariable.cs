@@ -23,3 +23,11 @@ public class ExVariable<T>{
     public Action onValueChange;
 
 }
+
+
+public enum ExTypes
+{
+    Float,
+    Int,
+    Bool
+}

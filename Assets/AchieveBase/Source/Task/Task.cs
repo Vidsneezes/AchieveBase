@@ -5,25 +5,11 @@ public class Task {
     public string description;
 }
 
-public struct TaskConditionFloat
+public struct TaskCondition<T>
 {
     public string valueToCheck;
     public Comparors compareType;
-    public float expectedValue;
-}
-
-public struct TaskConditionBool
-{
-    public string valueToCheck;
-    public Comparors compareType;
-    public bool expectedValue;
-}
-
-public struct TaskConditionInt
-{
-    public string valueToCheck;
-    public Comparors compareType;
-    public int expectedValue;
+    public T expectedValue;
 }
 
 public enum Comparors

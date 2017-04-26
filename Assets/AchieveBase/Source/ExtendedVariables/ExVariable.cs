@@ -40,9 +40,13 @@ public class ExVariable<T>{
         _shallowValue = newValue;
     }
 
-    public virtual void IsEqual(T otherValue)
+    public virtual bool IsEqual(T otherValue)
     {
-
+        if (value.Equals(otherValue))
+        {
+            return true;
+        }
+        return false;
     }
 
     public virtual int ValueDifference(T otherValue)

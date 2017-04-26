@@ -10,17 +10,28 @@ public class ExVariable<T>{
             return value;
         }
 
-        set
-        {
-            _value = value; 
-            if(onValueChange != null)
-            {
-                onValueChange();
-            }
-        }
     }
 
     public Action onValueChange;
+
+    private T _shallowValue;
+    public T shallowValue
+    {
+        get
+        {
+            return _shallowValue;
+        }
+    }
+
+    public void Apply(T permenantValue)
+    {
+        _value = permenantValue;
+    }
+
+    public void Set(T newValue)
+    {
+        _shallowValue = newValue;
+    }
 
 }
 

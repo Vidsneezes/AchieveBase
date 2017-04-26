@@ -16,6 +16,15 @@ public class Task<T>  {
     public ConditionBuilder<T> conditionBuilder;
     private IGeneralCondition generalCondition;
 
+    public Task(string _title, string _uniqueId, string _description)
+    {
+        Title = _title;
+        uniqueId = _uniqueId;
+        description = _description;
+        state = TaskState.LOCKED;
+        conditionBuilder = new ConditionBuilder<T>();
+    }
+
     public void ClearConditionChecked()
     {
         if(conditionBuilder.exType == ExTypes.Float)

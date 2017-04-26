@@ -1,20 +1,21 @@
 ﻿using System;
 
 public class Task<T> : ITask {
+    public string uniqueId;
     public string Title;
     public string description;
-    public TaskCondition<T> taskCondition;
+    public ConditionBuilder<T> conditionBuilder;
     private IGeneralCondition generalCondition;
 
     public bool ClearConditionChecked()
     {
-        if(taskCondition.exType == ExTypes.Float)
+        if(conditionBuilder.exType == ExTypes.Float)
         {
             generalCondition = new FloatCondition();
-        }else if(taskCondition.exType == ExTypes.Int) 
+        }else if(conditionBuilder.exType == ExTypes.Int) 
         {
             generalCondition = new BoolCondition();
-        }else if(taskCondition.exType == ExTypes.Bool)
+        }else if(conditionBuilder.exType == ExTypes.Bool)
         {
             generalCondition = new IntCondition();
         }
@@ -23,7 +24,7 @@ public class Task<T> : ITask {
     }
 }
 
-public class TaskCondition<T>
+public class ConditionBuilder<T>
 {
     public string valueToCheck;
     public Comparors compareType;
@@ -38,7 +39,7 @@ public interface IGeneralCondition
 
 public class FloatCondition : IGeneralCondition
 {
-    TaskCondition<float> taskCondition;
+    ConditionBuilder<float> taskCondition;
     public bool ConditionMet()
     {
         return false;
@@ -47,7 +48,7 @@ public class FloatCondition : IGeneralCondition
 
 public class BoolCondition : IGeneralCondition
 {
-    TaskCondition<float> taskCondition;
+    ConditionBuilder<float> taskCondition;
     public bool ConditionMet()
     {
         return false;
@@ -56,7 +57,7 @@ public class BoolCondition : IGeneralCondition
 
 public class IntCondition : IGeneralCondition
 {
-    TaskCondition<float> taskCondition;
+    ConditionBuilder<float> taskCondition;
     public bool ConditionMet()
     {
         return false;

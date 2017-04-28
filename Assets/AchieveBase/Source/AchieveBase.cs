@@ -69,4 +69,33 @@ public static class AchieveBase  {
         return false;
     }
 
+    public static void SetInt(string variableName, int newValue, bool relative = false)
+    {
+        ExInt value;
+        if (intDatabase.GetVariable(variableName, out value))
+        {
+            if (relative == true)
+            {
+                value.Set(value.shallowValue + newValue);
+            }
+            else
+            {
+                value.Set(newValue);
+            }
+            intDatabase.SetVariable(variableName, value);
+        }
+    }
+
+    public static bool GetInt(string variableName, out int value)
+    {
+        ExInt valueX;
+        if (intDatabase.GetVariable(variableName, out valueX))
+        {
+            value = valueX.value;
+            return true;
+        }
+        value = 0;
+        return false;
+    }
+
 }

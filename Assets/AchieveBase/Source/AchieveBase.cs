@@ -57,4 +57,16 @@ public static class AchieveBase  {
         return false;
     }
 
+    public static bool GetBool(string variableName, out bool value)
+    {
+        ExBool valueX;
+        if (boolDatabase.GetVariable(variableName, out valueX))
+        {
+            value = valueX.value;
+            return true;
+        }
+        value = false;
+        return false;
+    }
+
 }

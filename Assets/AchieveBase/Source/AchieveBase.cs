@@ -45,4 +45,14 @@ public static class AchieveBase  {
         return false;
     }
 
+    public static bool SetBool(string variableName, bool newValue)
+    {
+        ExBool value;
+        if (boolDatabase.GetVariable(variableName, out value))
+        {
+            value.Set(newValue);
+            boolDatabase.SetVariable(variableName, value);
+        }
+    }
+
 }

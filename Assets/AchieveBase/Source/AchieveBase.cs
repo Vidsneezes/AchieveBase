@@ -52,7 +52,9 @@ public static class AchieveBase  {
         {
             value.Set(newValue);
             boolDatabase.SetVariable(variableName, value);
+            return true;
         }
+        return false;
     }
 
 }

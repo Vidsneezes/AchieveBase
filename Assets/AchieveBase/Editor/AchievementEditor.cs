@@ -12,13 +12,21 @@ public class AchievementEditor : EditorWindow {
         ae.Show();
     }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void OnGUI()
+    {
+
+    }
+}
+
+public struct TaskBaseStruct
+{
+    public string title;
+    public string description;
+    public string keyToCheck;
+    public Comparors comparer;
+    public ExTypes variableTypeCheck;
+    public bool checkValueBool;
+    public float checkValueFloat;
+    public int checkValueInt;
+
 }

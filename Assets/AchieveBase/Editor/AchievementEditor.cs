@@ -7,6 +7,8 @@ public class AchievementEditor : EditorWindow {
 
     public TaskBaseStruct taskBaseStruct;
 
+    //TODO added condition checking and auto setup
+
     [MenuItem("AchieveBase/Achievement Editor")]
     public static void Init()
     {

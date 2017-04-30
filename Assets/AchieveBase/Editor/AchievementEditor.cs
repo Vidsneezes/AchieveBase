@@ -5,6 +5,8 @@ using UnityEditor;
 
 public class AchievementEditor : EditorWindow {
 
+    public TaskBaseStruct taskBaseStruct;
+
     [MenuItem("AchieveBase/Achievement Editor")]
     public static void Init()
     {
@@ -14,7 +16,20 @@ public class AchievementEditor : EditorWindow {
 
     void OnGUI()
     {
+        TaskRenderer();
+    }
 
+    void TaskRenderer()
+    {
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Title ");
+        taskBaseStruct.title = EditorGUILayout.TextField(taskBaseStruct.title);
+        EditorGUILayout.LabelField("Description ");
+        taskBaseStruct.description = EditorGUILayout.TextArea(taskBaseStruct.description);
+        EditorGUILayout.LabelField("Pick a variable Type");
+        taskBaseStruct.variableTypeCheck = (ExTypes)EditorGUILayout.EnumPopup(taskBaseStruct.variableTypeCheck);
+        EditorGUILayout.LabelField("Check Condition");
+        
     }
 }
 

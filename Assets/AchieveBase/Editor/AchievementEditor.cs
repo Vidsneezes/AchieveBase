@@ -6,6 +6,8 @@ using UnityEditor;
 public class AchievementEditor : EditorWindow {
 
     public TaskBaseStruct taskBaseStruct;
+    public string comparor;
+    public int comparorIndex;
 
     //TODO added condition checking and auto setup
 
@@ -50,6 +52,19 @@ public class AchievementEditor : EditorWindow {
 
     void BoolConditionRenderer()
     {
+        string[] comparors = new string[]
+        {
+            "Equal",
+            "NotEqual"
+        };
+
+        comparorIndex = EditorGUILayout.Popup(comparorIndex, comparors);
+        comparor = comparors[comparorIndex];
+        switch (comparor)
+        {
+            case "Equal": taskBaseStruct.comparer = Comparors.equal; break;
+            case "NotEqual": taskBaseStruct.comparer = Comparors.notEqual; break;
+        }
     }
 
     void IntConditionRenderer()

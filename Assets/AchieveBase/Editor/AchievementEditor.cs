@@ -31,7 +31,34 @@ public class AchievementEditor : EditorWindow {
         EditorGUILayout.LabelField("Pick a variable Type");
         taskBaseStruct.variableTypeCheck = (ExTypes)EditorGUILayout.EnumPopup(taskBaseStruct.variableTypeCheck);
         EditorGUILayout.LabelField("Check Condition");
-        
+        ConditionRenderer();
+
+    }
+
+    void ConditionRenderer()
+    {
+        switch (taskBaseStruct.variableTypeCheck)
+        {
+            case ExTypes.Bool:BoolConditionRenderer(); break;
+            case ExTypes.Float: FloatConditionRenderer(); break;
+            case ExTypes.Int: IntConditionRenderer(); break;
+
+        }
+    }
+
+    void BoolConditionRenderer()
+    {
+
+    }
+
+    void IntConditionRenderer()
+    {
+
+    }
+
+    void FloatConditionRenderer()
+    {
+
     }
 }
 

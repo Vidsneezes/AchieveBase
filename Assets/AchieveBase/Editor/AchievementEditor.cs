@@ -37,6 +37,8 @@ public class AchievementEditor : EditorWindow {
 
     void ConditionRenderer()
     {
+        EditorGUILayout.LabelField("Key To Check");
+        taskBaseStruct.keyToCheck = EditorGUILayout.TextField(taskBaseStruct.keyToCheck);
         switch (taskBaseStruct.variableTypeCheck)
         {
             case ExTypes.Bool:BoolConditionRenderer(); break;
@@ -48,7 +50,6 @@ public class AchievementEditor : EditorWindow {
 
     void BoolConditionRenderer()
     {
-
     }
 
     void IntConditionRenderer()

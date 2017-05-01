@@ -96,6 +96,7 @@ public class IntCondition : IGeneralCondition
 public enum Comparors
 {
     equal,
+    notEqual,
     greaterThan,
     lessThan,
     greaterOrEqualThan,

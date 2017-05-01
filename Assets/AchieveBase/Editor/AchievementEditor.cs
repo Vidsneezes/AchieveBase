@@ -29,6 +29,10 @@ public class AchievementEditor : EditorWindow {
             "LessThan",
             "GreaterThan",
     };
+
+    private bool tempBool;
+    private float tempFloat;
+    private int tempInt;
     //TODO added condition checking and auto setup
 
     [MenuItem("AchieveBase/Achievement Editor")]
@@ -79,7 +83,8 @@ public class AchievementEditor : EditorWindow {
             case "NotEqual": taskBaseStruct.comparer = Comparors.notEqual; break;
         }
 
-        taskBaseStruct.checkValueBool = EditorGUILayout.Toggle(taskBaseStruct.checkValueBool);
+        tempBool = EditorGUILayout.Toggle(taskBaseStruct.checkValueBool);
+        taskBaseStruct.checkValueBool = tempBool; 
     }
 
     void IntConditionRenderer()
@@ -95,7 +100,8 @@ public class AchievementEditor : EditorWindow {
             case "LessOrEqualThan": taskBaseStruct.comparer = Comparors.lessOrEqualThan; break;
             case "GreaterOrEqualThan": taskBaseStruct.comparer = Comparors.greaterOrEqualThan; break;
         }
-        taskBaseStruct.checkValueInt = EditorGUILayout.IntField(taskBaseStruct.checkValueInt);
+        tempInt = EditorGUILayout.IntField(taskBaseStruct.checkValueInt);
+        taskBaseStruct.checkValueInt = tempInt;
     }
 
     void FloatConditionRenderer()
@@ -107,7 +113,8 @@ public class AchievementEditor : EditorWindow {
             case "LessThan": taskBaseStruct.comparer = Comparors.lessThan; break;
             case "GreaterThan": taskBaseStruct.comparer = Comparors.greaterThan; break;
         }
-        taskBaseStruct.checkValueFloat = EditorGUILayout.FloatField(taskBaseStruct.checkValueFloat);
+        tempFloat = EditorGUILayout.FloatField(taskBaseStruct.checkValueFloat);
+        taskBaseStruct.checkValueFloat = tempFloat;
     }
 }
 

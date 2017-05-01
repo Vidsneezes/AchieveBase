@@ -87,6 +87,10 @@ public class AchievementEditor : EditorWindow {
         {
             case "Equal": taskBaseStruct.comparer = Comparors.equal; break;
             case "NotEqual": taskBaseStruct.comparer = Comparors.notEqual; break;
+            case "LessThan": taskBaseStruct.comparer = Comparors.lessThan; break;
+            case "GreaterThan": taskBaseStruct.comparer = Comparors.greaterThan; break;
+            case "LessOrEqualThan": taskBaseStruct.comparer = Comparors.lessOrEqualThan; break;
+            case "GreaterOrEqualThan": taskBaseStruct.comparer = Comparors.greaterOrEqualThan; break;
         }
         taskBaseStruct.checkValueInt = EditorGUILayout.IntField(taskBaseStruct.checkValueInt);
     }

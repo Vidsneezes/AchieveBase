@@ -8,7 +8,27 @@ public class AchievementEditor : EditorWindow {
     public TaskBaseStruct taskBaseStruct;
     public string comparor;
     public int comparorIndex;
+    string[] comparorInt = new string[]
+    {
+            "Equal",
+            "NotEqual",
+            "LessThan",
+            "GreaterThan",
+            "LessOrEqualThan",
+            "GreaterOrEqualThan"
+    };
 
+    string[] comparorBool = new string[]
+    {
+            "Equal",
+            "NotEqual"
+    };
+
+    string[] comparorFloat = new string[]
+    {
+            "LessThan",
+            "GreaterThan",
+    };
     //TODO added condition checking and auto setup
 
     [MenuItem("AchieveBase/Achievement Editor")]
@@ -34,7 +54,6 @@ public class AchievementEditor : EditorWindow {
         taskBaseStruct.variableTypeCheck = (ExTypes)EditorGUILayout.EnumPopup(taskBaseStruct.variableTypeCheck);
         EditorGUILayout.LabelField("Check Condition");
         ConditionRenderer();
-
     }
 
     void ConditionRenderer()
@@ -52,14 +71,8 @@ public class AchievementEditor : EditorWindow {
 
     void BoolConditionRenderer()
     {
-        string[] comparors = new string[]
-        {
-            "Equal",
-            "NotEqual"
-        };
-
-        comparorIndex = EditorGUILayout.Popup(comparorIndex, comparors);
-        comparor = comparors[comparorIndex];
+        comparorIndex = EditorGUILayout.Popup(comparorIndex, comparorBool);
+        comparor = comparorBool[comparorIndex];
         switch (comparor)
         {
             case "Equal": taskBaseStruct.comparer = Comparors.equal; break;
@@ -71,18 +84,8 @@ public class AchievementEditor : EditorWindow {
 
     void IntConditionRenderer()
     {
-        string[] comparors = new string[]
-       {
-            "Equal",
-            "NotEqual",
-            "LessThan",
-            "GreaterThan",
-            "LessOrEqualThan",
-            "GreaterOrEqualThan"
-       };
-
-        comparorIndex = EditorGUILayout.Popup(comparorIndex, comparors);
-        comparor = comparors[comparorIndex];
+        comparorIndex = EditorGUILayout.Popup(comparorIndex, comparorInt);
+        comparor = comparorInt[comparorIndex];
         switch (comparor)
         {
             case "Equal": taskBaseStruct.comparer = Comparors.equal; break;
@@ -97,7 +100,14 @@ public class AchievementEditor : EditorWindow {
 
     void FloatConditionRenderer()
     {
-
+        comparorIndex = EditorGUILayout.Popup(comparorIndex, comparorFloat);
+        comparor = comparorFloat[comparorIndex];
+        switch (comparor)
+        {
+            case "LessThan": taskBaseStruct.comparer = Comparors.lessThan; break;
+            case "GreaterThan": taskBaseStruct.comparer = Comparors.greaterThan; break;
+        }
+        taskBaseStruct.checkValueFloat = EditorGUILayout.FloatField(taskBaseStruct.checkValueFloat);
     }
 }
 

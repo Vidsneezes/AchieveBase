@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEditor;
 
@@ -35,6 +36,7 @@ public class AchievementEditor : EditorWindow {
     private bool tempBool;
     private float tempFloat;
     private int tempInt;
+    private VariableDataContainer variableDataContiner;
     //TODO added condition checking and auto setup
 
     [MenuItem("AchieveBase/Achievement Editor")]
@@ -46,6 +48,13 @@ public class AchievementEditor : EditorWindow {
 
     void OnGUI()
     {
+        if(variableDataContiner == null)
+        {
+            variableDataContiner = (VariableDataContainer)ScriptableObject.CreateInstance(typeof(VariableDataContainer));
+            AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
+            AssetDatabase.SaveAssets();
+        }
+
         AddNewVariableRenderer();
     }
 

@@ -6,9 +6,10 @@ using UnityEditor;
 public class AchievementEditor : EditorWindow {
 
 
-    public Dictionary<string, ExFloat> floatDatabase;
-    public Dictionary<string, ExBool> boolDatabase;
-    public Dictionary<string, ExInt> intDatabase;
+    public ExFloat floatTemp;
+    public ExBool boolTemp;
+    public ExInt intTemp;
+    public HumanTemplate 
 
     public TaskBaseStruct taskBaseStruct;
     public string comparor;
@@ -49,7 +50,15 @@ public class AchievementEditor : EditorWindow {
 
     void OnGUI()
     {
-        TaskRenderer();
+        AddNewVariableRenderer();
+    }
+
+    void AddNewVariableRenderer()
+    {
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Add new Variable");
+        EditorGUILayout.LabelField("Variable Type");
+
     }
 
     void TaskRenderer()
@@ -134,4 +143,13 @@ public struct TaskBaseStruct
     public float checkValueFloat;
     public int checkValueInt;
 
+}
+
+public struct ExVariableStruct
+{
+    public float float_start;
+    public bool bool_start;
+    public int int_start;
+    public ExTypes type;
+    public string value;
 }

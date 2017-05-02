@@ -6,11 +6,7 @@ using UnityEditor;
 public class AchievementEditor : EditorWindow {
 
 
-    public ExFloat floatTemp;
-    public ExBool boolTemp;
-    public ExInt intTemp;
-    public HumanTemplate 
-
+    public ExVariableStruct exVraibleStruct;
     public TaskBaseStruct taskBaseStruct;
     public string comparor;
     public int comparorIndex;
@@ -58,6 +54,16 @@ public class AchievementEditor : EditorWindow {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Add new Variable");
         EditorGUILayout.LabelField("Variable Type");
+        exVraibleStruct.type = (ExTypes)EditorGUILayout.EnumPopup(exVraibleStruct.type);
+        EditorGUILayout.LabelField("Variable Name");
+        exVraibleStruct.value = EditorGUILayout.TextField(exVraibleStruct.value);
+        EditorGUILayout.LabelField("Start Value");
+        switch (exVraibleStruct.type)
+        {
+            case ExTypes.Bool: exVraibleStruct.bool_start = EditorGUILayout.Toggle(exVraibleStruct.bool_start); break;
+            case ExTypes.Float: exVraibleStruct.float_start = EditorGUILayout.FloatField(exVraibleStruct.float_start); break;
+            case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;
+        }
 
     }
 

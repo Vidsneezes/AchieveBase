@@ -5,6 +5,11 @@ using UnityEditor;
 
 public class AchievementEditor : EditorWindow {
 
+
+    public Dictionary<string, ExFloat> floatDatabase;
+    public Dictionary<string, ExBool> boolDatabase;
+    public Dictionary<string, ExInt> intDatabase;
+
     public TaskBaseStruct taskBaseStruct;
     public string comparor;
     public int comparorIndex;

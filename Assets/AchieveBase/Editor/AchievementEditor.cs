@@ -50,9 +50,13 @@ public class AchievementEditor : EditorWindow {
     {
         if(variableDataContiner == null)
         {
-            variableDataContiner = (VariableDataContainer)ScriptableObject.CreateInstance(typeof(VariableDataContainer));
-            AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
-            AssetDatabase.SaveAssets();
+            variableDataContiner = AssetDatabase.LoadAssetAtPath<VariableDataContainer>("Assets/__VariableDatabase.asset");
+            if (variableDataContiner == null)
+            {
+                variableDataContiner = (VariableDataContainer)ScriptableObject.CreateInstance(typeof(VariableDataContainer));
+                AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
+                AssetDatabase.SaveAssets();
+            }
         }
 
         AddNewVariableRenderer();

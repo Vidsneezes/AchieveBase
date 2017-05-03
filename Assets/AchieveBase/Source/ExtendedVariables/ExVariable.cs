@@ -15,7 +15,7 @@ public class BaseVariable
 
 public class ExVariable<T>: BaseVariable{
 
-    private T _value;
+    protected T _value;
     public T value
     {
         get
@@ -25,7 +25,7 @@ public class ExVariable<T>: BaseVariable{
 
     }
 
-    private T _shallowValue;
+    protected T _shallowValue;
     public T shallowValue
     {
         get
@@ -71,17 +71,29 @@ public class ExVariable<T>: BaseVariable{
 
 public class ExInt : ExVariable<int>
 {
-
+    public ExInt(int va)
+    {
+        _value = va;
+        _shallowValue = va;
+    }
 }
 
 public class ExFloat : ExVariable<float>
 {
-
+    public ExFloat(float va)
+    {
+        _value = va;
+        _shallowValue = va;
+    }
 }
 
 public class ExBool : ExVariable<bool>
 {
-
+    public ExBool(bool va)
+    {
+        _value = va;
+        _shallowValue = va;
+    }
 }
 
 public enum ExTypes

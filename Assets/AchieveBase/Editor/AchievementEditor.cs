@@ -78,6 +78,18 @@ public class AchievementEditor : EditorWindow {
             case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;
         }
 
+        if(GUILayout.Button("Save Variable"))
+        {
+            switch (exVraibleStruct.type)
+            {
+                case ExTypes.Bool: ExBool exBool = new ExBool(); if (!variableDataContiner.bools.Contains(exBool))
+                    {
+
+                    } break;
+                case ExTypes.Float: exVraibleStruct.float_start = EditorGUILayout.FloatField(exVraibleStruct.float_start); break;
+                case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;
+            }
+        }
     }
 
     void TaskRenderer()

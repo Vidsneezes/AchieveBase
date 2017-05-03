@@ -91,8 +91,12 @@ public class AchievementEditor : EditorWindow {
             case ExTypes.Bool:
                 SaveBool();
                 break;
-            case ExTypes.Float: SaveFloat(); break;
-            case ExTypes.Int: SaveInt(); break;
+            case ExTypes.Float:
+                SaveFloat();
+                break;
+            case ExTypes.Int:
+                SaveInt();
+                break;
         }
     }
 

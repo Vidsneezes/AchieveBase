@@ -80,17 +80,49 @@ public class AchievementEditor : EditorWindow {
 
         if(GUILayout.Button("Save Variable"))
         {
-            switch (exVraibleStruct.type)
-            {
-                case ExTypes.Bool: ExBool exBool = new ExBool(exVraibleStruct.bool_start);
-                    exBool.variableName = exVraibleStruct.value;
-                    if (!variableDataContiner.bools.Contains(exBool))
-                    {
-                        variableDataContiner.bools.Add(exBool);
-                    } break;
-                case ExTypes.Float: exVraibleStruct.float_start = EditorGUILayout.FloatField(exVraibleStruct.float_start); break;
-                case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;
-            }
+        
+        }
+    }
+
+    public void SaveVariable()
+    {
+        switch (exVraibleStruct.type)
+        {
+            case ExTypes.Bool:
+                SaveBool();
+                break;
+            case ExTypes.Float: exVraibleStruct.float_start = EditorGUILayout.FloatField(exVraibleStruct.float_start); break;
+            case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;
+        }
+    }
+
+    private void SaveBool()
+    {
+        ExBool exBool = new ExBool(exVraibleStruct.bool_start);
+        exBool.variableName = exVraibleStruct.value;
+        if (!variableDataContiner.bools.Contains(exBool))
+        {
+            variableDataContiner.bools.Add(exBool);
+        }
+    }
+
+    private void SaveInt()
+    {
+        ExInt exInt = new ExInt(exVraibleStruct.int_start);
+        exInt.variableName = exVraibleStruct.value;
+        if (!variableDataContiner.ints.Contains(exInt))
+        {
+            variableDataContiner.ints.Add(exInt);
+        }
+    }
+
+    private void SaveFloat()
+    {
+        ExBool exBool = new ExBool(exVraibleStruct.bool_start);
+        exBool.variableName = exVraibleStruct.value;
+        if (!variableDataContiner.bools.Contains(exBool))
+        {
+            variableDataContiner.bools.Add(exBool);
         }
     }
 

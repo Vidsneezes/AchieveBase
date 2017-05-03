@@ -82,9 +82,11 @@ public class AchievementEditor : EditorWindow {
         {
             switch (exVraibleStruct.type)
             {
-                case ExTypes.Bool: ExBool exBool = new ExBool(); if (!variableDataContiner.bools.Contains(exBool))
+                case ExTypes.Bool: ExBool exBool = new ExBool(exVraibleStruct.bool_start);
+                    exBool.variableName = exVraibleStruct.value;
+                    if (!variableDataContiner.bools.Contains(exBool))
                     {
-
+                        variableDataContiner.bools.Add(exBool);
                     } break;
                 case ExTypes.Float: exVraibleStruct.float_start = EditorGUILayout.FloatField(exVraibleStruct.float_start); break;
                 case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;

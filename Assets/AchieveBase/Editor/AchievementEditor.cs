@@ -91,8 +91,8 @@ public class AchievementEditor : EditorWindow {
             case ExTypes.Bool:
                 SaveBool();
                 break;
-            case ExTypes.Float: exVraibleStruct.float_start = EditorGUILayout.FloatField(exVraibleStruct.float_start); break;
-            case ExTypes.Int: exVraibleStruct.int_start = EditorGUILayout.IntField(exVraibleStruct.int_start); break;
+            case ExTypes.Float: SaveFloat(); break;
+            case ExTypes.Int: SaveInt(); break;
         }
     }
 
@@ -118,11 +118,11 @@ public class AchievementEditor : EditorWindow {
 
     private void SaveFloat()
     {
-        ExBool exBool = new ExBool(exVraibleStruct.bool_start);
-        exBool.variableName = exVraibleStruct.value;
-        if (!variableDataContiner.bools.Contains(exBool))
+        ExFloat exFloat = new ExFloat(exVraibleStruct.float_start);
+        exFloat.variableName = exVraibleStruct.value;
+        if (!variableDataContiner.floats.Contains(exFloat))
         {
-            variableDataContiner.bools.Add(exBool);
+            variableDataContiner.floats.Add(exFloat);
         }
     }
 

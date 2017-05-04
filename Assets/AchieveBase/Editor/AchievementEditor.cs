@@ -67,15 +67,19 @@ public class AchievementEditor : EditorWindow {
             }
             else
             {
-                variableContainerStruct.bools = variableDataContiner.bools;
-                variableContainerStruct.ints = variableDataContiner.ints;
-                variableContainerStruct.floats = variableDataContiner.floats;
-
+                variableContainerStruct.bools = new List<ExBool>();
+                variableContainerStruct.ints = new List<ExInt>();
+                variableContainerStruct.floats = new List<ExFloat>();
             }
 
         }
         VariableViewRenderer();
         AddNewVariableRenderer();
+    }
+
+    public void OnInspectorUpdate()
+    {
+        this.Repaint();
     }
 
     void VariableViewRenderer()
@@ -85,7 +89,8 @@ public class AchievementEditor : EditorWindow {
         {
             if (variableContainerStruct.bools.Count > 0)
             {
-                //EditorGUILayout.LabelField(variableContainerStruct.bools[0].variableName + " " + variableContainerStruct.bools[0].value);
+                EditorGUILayout.LabelField(variableContainerStruct.bools[0].Print());
+                Debug.Log(variableContainerStruct.bools[0].value);
             }
         }
     }

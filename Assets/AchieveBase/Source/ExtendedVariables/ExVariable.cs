@@ -67,6 +67,11 @@ public class ExVariable<T>: BaseVariable{
         return 0;
     }
 
+    public string Print()
+    {
+        return (variableName + " ");
+    }
+
 }
 
 [System.Serializable]

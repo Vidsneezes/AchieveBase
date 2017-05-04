@@ -13,6 +13,7 @@ public class BaseVariable
     }
 }
 
+[System.Serializable]
 public class ExVariable<T>: BaseVariable{
 
     protected T _value;
@@ -68,7 +69,7 @@ public class ExVariable<T>: BaseVariable{
 
 }
 
-
+[System.Serializable]
 public class ExInt : ExVariable<int>
 {
     public ExInt(int va)
@@ -78,6 +79,7 @@ public class ExInt : ExVariable<int>
     }
 }
 
+[System.Serializable]
 public class ExFloat : ExVariable<float>
 {
     public ExFloat(float va)
@@ -87,6 +89,7 @@ public class ExFloat : ExVariable<float>
     }
 }
 
+[System.Serializable]
 public class ExBool : ExVariable<bool>
 {
     public ExBool(bool va)

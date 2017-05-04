@@ -37,6 +37,9 @@ public class AchievementEditor : EditorWindow {
     private float tempFloat;
     private int tempInt;
     private VariableDataContainer variableDataContiner;
+    private bool boolDisplay;
+    private bool intDisplay;
+    private bool floatDisplay;
     //TODO added condition checking and auto setup
 
     [MenuItem("AchieveBase/Achievement Editor")]
@@ -58,8 +61,20 @@ public class AchievementEditor : EditorWindow {
                 AssetDatabase.SaveAssets();
             }
         }
-
+        VariableViewRenderer();
         AddNewVariableRenderer();
+    }
+
+    void VariableViewRenderer()
+    {
+        boolDisplay = EditorGUILayout.Foldout(boolDisplay, "Bools");
+        if (boolDisplay)
+        {
+            for (int i = 0; i < variableDataContiner.bools.Count; i++)
+            {
+                EditorGUILayout.LabelField(variableDataContiner.bools[i].variableName + " " + variableDataContiner.bools[i].value);
+            }
+        }
     }
 
     void AddNewVariableRenderer()
@@ -98,6 +113,8 @@ public class AchievementEditor : EditorWindow {
                 SaveInt();
                 break;
         }
+        AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
+        AssetDatabase.SaveAssets();
     }
 
     private void SaveBool()

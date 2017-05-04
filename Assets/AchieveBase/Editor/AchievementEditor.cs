@@ -131,7 +131,12 @@ public class AchievementEditor : EditorWindow {
         if(GUILayout.Button("Save Variable"))
         {
             SaveVariable();
-
+            exVraibleStruct.type = ExTypes.Bool;
+            exVraibleStruct.value = "";
+            exVraibleStruct.bool_start = false;
+            exVraibleStruct.int_start = 0;
+            exVraibleStruct.float_start = 0;
+            this.Repaint();
         }
     }
 

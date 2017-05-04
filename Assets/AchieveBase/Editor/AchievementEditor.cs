@@ -95,7 +95,7 @@ public class AchievementEditor : EditorWindow {
 
         if(GUILayout.Button("Save Variable"))
         {
-        
+            SaveVariable();
         }
     }
 
@@ -113,8 +113,7 @@ public class AchievementEditor : EditorWindow {
                 SaveInt();
                 break;
         }
-        AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
-        AssetDatabase.SaveAssets();
+
     }
 
     private void SaveBool()

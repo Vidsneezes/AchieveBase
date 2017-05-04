@@ -37,6 +37,7 @@ public class AchievementEditor : EditorWindow {
     private float tempFloat;
     private int tempInt;
     private VariableDataContainer variableDataContiner;
+    private VariableContainerStruct variableContainerStruct;
     private bool boolDisplay;
     private bool intDisplay;
     private bool floatDisplay;
@@ -57,9 +58,21 @@ public class AchievementEditor : EditorWindow {
             if (variableDataContiner == null)
             {
                 variableDataContiner = (VariableDataContainer)ScriptableObject.CreateInstance(typeof(VariableDataContainer));
+
                 AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
                 AssetDatabase.SaveAssets();
+                variableContainerStruct.bools = new List<ExBool>();
+                variableContainerStruct.ints = new List<ExInt>(); 
+                variableContainerStruct.floats = new List<ExFloat>();
             }
+            else
+            {
+                variableContainerStruct.bools = variableDataContiner.bools;
+                variableContainerStruct.ints = variableDataContiner.ints;
+                variableContainerStruct.floats = variableDataContiner.floats;
+
+            }
+
         }
         VariableViewRenderer();
         AddNewVariableRenderer();
@@ -70,9 +83,9 @@ public class AchievementEditor : EditorWindow {
         boolDisplay = EditorGUILayout.Foldout(boolDisplay, "Bools");
         if (boolDisplay)
         {
-            for (int i = 0; i < variableDataContiner.bools.Count; i++)
+            if (variableContainerStruct.bools.Count > 0)
             {
-                EditorGUILayout.LabelField(variableDataContiner.bools[i].variableName + " " + variableDataContiner.bools[i].value);
+                EditorGUILayout.LabelField(variableContainerStruct.bools[0].variableName + " " + variableContainerStruct.bools[0].value);
             }
         }
     }
@@ -120,9 +133,9 @@ public class AchievementEditor : EditorWindow {
     {
         ExBool exBool = new ExBool(exVraibleStruct.bool_start);
         exBool.variableName = exVraibleStruct.value;
-        if (!variableDataContiner.bools.Contains(exBool))
+        if (!variableContainerStruct.bools.Contains(exBool))
         {
-            variableDataContiner.bools.Add(exBool);
+            variableContainerStruct.bools.Add(exBool);
         }
     }
 
@@ -130,9 +143,9 @@ public class AchievementEditor : EditorWindow {
     {
         ExInt exInt = new ExInt(exVraibleStruct.int_start);
         exInt.variableName = exVraibleStruct.value;
-        if (!variableDataContiner.ints.Contains(exInt))
+        if (!variableContainerStruct.ints.Contains(exInt))
         {
-            variableDataContiner.ints.Add(exInt);
+            variableContainerStruct.ints.Add(exInt);
         }
     }
 
@@ -140,9 +153,9 @@ public class AchievementEditor : EditorWindow {
     {
         ExFloat exFloat = new ExFloat(exVraibleStruct.float_start);
         exFloat.variableName = exVraibleStruct.value;
-        if (!variableDataContiner.floats.Contains(exFloat))
+        if (!variableContainerStruct.floats.Contains(exFloat))
         {
-            variableDataContiner.floats.Add(exFloat);
+            variableContainerStruct.floats.Add(exFloat);
         }
     }
 
@@ -237,4 +250,11 @@ public struct ExVariableStruct
     public int int_start;
     public ExTypes type;
     public string value;
+}
+
+public struct VariableContainerStruct
+{
+    public List<ExBool> bools;
+    public List<ExInt> ints;
+    public List<ExFloat> floats;
 }

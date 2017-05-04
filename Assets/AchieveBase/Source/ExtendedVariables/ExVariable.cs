@@ -21,7 +21,7 @@ public class ExVariable<T>: BaseVariable{
     {
         get
         {
-            return value;
+            return _value;
         }
 
     }
@@ -101,7 +101,7 @@ public class ExBool : ExVariable<bool>
     {
         _value = va;
         _shallowValue = va;
-    }
+    }   
 }
 
 public enum ExTypes

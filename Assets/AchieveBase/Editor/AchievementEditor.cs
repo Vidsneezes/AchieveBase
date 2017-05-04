@@ -87,10 +87,27 @@ public class AchievementEditor : EditorWindow {
         boolDisplay = EditorGUILayout.Foldout(boolDisplay, "Bools");
         if (boolDisplay)
         {
-            if (variableContainerStruct.bools.Count > 0)
+            for (int i = 0; i < variableContainerStruct.bools.Count; i++)
             {
-                EditorGUILayout.LabelField(variableContainerStruct.bools[0].Print());
-                Debug.Log(variableContainerStruct.bools[0].value);
+                EditorGUILayout.LabelField(variableContainerStruct.bools[i].Print());
+            }
+        }
+
+        intDisplay = EditorGUILayout.Foldout(intDisplay, "Ints");
+        if (intDisplay)
+        {
+            for (int i = 0; i < variableContainerStruct.ints.Count; i++)
+            {
+                EditorGUILayout.LabelField(variableContainerStruct.ints[i].Print());
+            }
+        }
+
+        floatDisplay = EditorGUILayout.Foldout(floatDisplay, "Floats");
+        if (floatDisplay)
+        {
+            for (int i = 0; i < variableContainerStruct.floats.Count; i++)
+            {
+                EditorGUILayout.LabelField(variableContainerStruct.floats[i].Print());
             }
         }
     }
@@ -114,6 +131,7 @@ public class AchievementEditor : EditorWindow {
         if(GUILayout.Button("Save Variable"))
         {
             SaveVariable();
+
         }
     }
 

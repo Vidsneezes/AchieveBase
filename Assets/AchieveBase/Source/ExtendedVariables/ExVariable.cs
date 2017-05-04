@@ -69,7 +69,7 @@ public class ExVariable<T>: BaseVariable{
 
     public string Print()
     {
-        return (variableName + " ");
+        return (variableName + " " + _value);
     }
 
 }

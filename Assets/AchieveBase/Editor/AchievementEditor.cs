@@ -85,7 +85,7 @@ public class AchievementEditor : EditorWindow {
         {
             if (variableContainerStruct.bools.Count > 0)
             {
-                EditorGUILayout.LabelField(variableContainerStruct.bools[0].variableName + " " + variableContainerStruct.bools[0].value);
+                //EditorGUILayout.LabelField(variableContainerStruct.bools[0].variableName + " " + variableContainerStruct.bools[0].value);
             }
         }
     }

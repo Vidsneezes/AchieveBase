@@ -76,6 +76,7 @@ public class AchievementEditor : EditorWindow {
         }
         VariableViewRenderer();
         AddNewVariableRenderer();
+        SearchVariableRenderer();
     }
 
     public void OnInspectorUpdate()
@@ -91,6 +92,30 @@ public class AchievementEditor : EditorWindow {
         EditorGUILayout.LabelField("Type of Variable");
         searchStruct.type = (ExTypes)EditorGUILayout.EnumPopup(searchStruct.type);
 
+    }
+
+    void FindThisVariable(string variable, ExTypes type)
+    {
+        switch (type)
+        {
+            case ExTypes.Bool:break;
+            case ExTypes.Float:break;
+            case ExTypes.Int:break;
+        }
+    }
+
+    void FindFloatVariable(string variable)
+    {
+
+    }
+
+    void FindBoolVariable(string variable)
+    {
+
+    }
+
+    void FindIntVariable(string variable)
+    {
 
     }
 

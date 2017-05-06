@@ -146,15 +146,17 @@ public class AchievementEditor : EditorWindow {
         {
             case ExTypes.Bool:
                 SaveBool();
+                variableDataContiner.bools = variableContainerStruct.bools;
                 break;
             case ExTypes.Float:
                 SaveFloat();
+                variableDataContiner.floats = variableContainerStruct.floats;
                 break;
             case ExTypes.Int:
                 SaveInt();
+                variableDataContiner.ints = variableContainerStruct.ints;
                 break;
         }
-
     }
 
     private void SaveBool()

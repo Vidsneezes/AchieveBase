@@ -122,7 +122,7 @@ public class AchievementEditor : EditorWindow {
 
     void FindIntVariable(string variable)
     {
-        for (int i = 0; i < variableContainerStruct.int.Count; i++)
+        for (int i = 0; i < variableContainerStruct.ints.Count; i++)
         {
 
         }

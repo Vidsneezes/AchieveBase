@@ -98,25 +98,34 @@ public class AchievementEditor : EditorWindow {
     {
         switch (type)
         {
-            case ExTypes.Bool:break;
-            case ExTypes.Float:break;
-            case ExTypes.Int:break;
+            case ExTypes.Bool: FindBoolVariable(variable); break;
+            case ExTypes.Float:FindFloatVariable(variable); break;
+            case ExTypes.Int: FindIntVariable(variable); break;
         }
     }
 
     void FindFloatVariable(string variable)
     {
+        for (int i = 0; i < variableContainerStruct.floats.Count; i++)
+        {
 
+        }
     }
 
     void FindBoolVariable(string variable)
     {
+        for (int i = 0; i < variableContainerStruct.bools.Count; i++)
+        {
 
+        }
     }
 
     void FindIntVariable(string variable)
     {
+        for (int i = 0; i < variableContainerStruct.int.Count; i++)
+        {
 
+        }
     }
 
     void VariableViewRenderer()

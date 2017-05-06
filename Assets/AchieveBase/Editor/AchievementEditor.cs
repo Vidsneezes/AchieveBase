@@ -61,15 +61,15 @@ public class AchievementEditor : EditorWindow {
 
                 AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
                 AssetDatabase.SaveAssets();
-                variableContainerStruct.bools = new List<ExBool>();
-                variableContainerStruct.ints = new List<ExInt>(); 
-                variableContainerStruct.floats = new List<ExFloat>();
+                variableContainerStruct.bools = new List<ExBool>(variableDataContiner.bools.ToArray() );
+                variableContainerStruct.ints = new List<ExInt>(variableDataContiner.ints.ToArray()); 
+                variableContainerStruct.floats = new List<ExFloat>(variableDataContiner.floats.ToArray());
             }
             else
             {
-                variableContainerStruct.bools = new List<ExBool>();
-                variableContainerStruct.ints = new List<ExInt>();
-                variableContainerStruct.floats = new List<ExFloat>();
+                variableContainerStruct.bools = new List<ExBool>(variableDataContiner.bools.ToArray());
+                variableContainerStruct.ints = new List<ExInt>(variableDataContiner.ints.ToArray());
+                variableContainerStruct.floats = new List<ExFloat>(variableDataContiner.floats.ToArray());
             }
 
         }

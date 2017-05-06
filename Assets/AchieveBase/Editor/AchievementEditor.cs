@@ -38,6 +38,7 @@ public class AchievementEditor : EditorWindow {
     private int tempInt;
     private VariableDataContainer variableDataContiner;
     private VariableContainerStruct variableContainerStruct;
+    private SearchStruct searchStruct;
     private bool boolDisplay;
     private bool intDisplay;
     private bool floatDisplay;
@@ -84,6 +85,12 @@ public class AchievementEditor : EditorWindow {
 
     void SearchVariableRenderer()
     {
+        EditorGUILayout.LabelField("Searc For Variable");
+
+        searchStruct.query = EditorGUILayout.TextField(searchStruct.query);
+        EditorGUILayout.LabelField("Type of Variable");
+        searchStruct.type = (ExTypes)EditorGUILayout.EnumPopup(searchStruct.type);
+
 
     }
 
@@ -296,4 +303,10 @@ public struct VariableContainerStruct
     public List<ExBool> bools;
     public List<ExInt> ints;
     public List<ExFloat> floats;
+}
+
+public struct SearchStruct
+{
+    public string query;
+    public ExTypes type;
 }

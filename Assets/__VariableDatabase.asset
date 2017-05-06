@@ -13,4 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floats: []
   bools: []
-  ints: []
+  ints:
+  - variableName: fds
+    uniqueId: 

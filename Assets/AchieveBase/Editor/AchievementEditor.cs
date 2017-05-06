@@ -137,6 +137,8 @@ public class AchievementEditor : EditorWindow {
             exVraibleStruct.int_start = 0;
             exVraibleStruct.float_start = 0;
             this.Repaint();
+            AssetDatabase.SaveAssets();
+
         }
     }
 

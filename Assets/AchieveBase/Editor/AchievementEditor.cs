@@ -108,7 +108,10 @@ public class AchievementEditor : EditorWindow {
     {
         for (int i = 0; i < variableContainerStruct.floats.Count; i++)
         {
-
+            if(variableContainerStruct.floats[i].variableName == variable)
+            {
+                EditorGUILayout.LabelField(variableContainerStruct.floats[i].Print());
+            }
         }
     }
 
@@ -116,7 +119,7 @@ public class AchievementEditor : EditorWindow {
     {
         for (int i = 0; i < variableContainerStruct.bools.Count; i++)
         {
-
+            EditorGUILayout.LabelField(variableContainerStruct.bools[i].Print());
         }
     }
 
@@ -124,7 +127,7 @@ public class AchievementEditor : EditorWindow {
     {
         for (int i = 0; i < variableContainerStruct.ints.Count; i++)
         {
-
+            EditorGUILayout.LabelField(variableContainerStruct.ints[i].Print());
         }
     }
 

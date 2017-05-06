@@ -82,6 +82,11 @@ public class AchievementEditor : EditorWindow {
         this.Repaint();
     }
 
+    void SearchVariableRenderer()
+    {
+
+    }
+
     void VariableViewRenderer()
     {
         boolDisplay = EditorGUILayout.Foldout(boolDisplay, "Bools");
@@ -137,6 +142,8 @@ public class AchievementEditor : EditorWindow {
             exVraibleStruct.int_start = 0;
             exVraibleStruct.float_start = 0;
             this.Repaint();
+            AssetDatabase.Refresh();
+            EditorUtility.SetDirty(variableDataContiner);
             AssetDatabase.SaveAssets();
 
         }

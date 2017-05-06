@@ -91,11 +91,13 @@ public class AchievementEditor : EditorWindow {
         searchStruct.query = EditorGUILayout.TextField(searchStruct.query);
         EditorGUILayout.LabelField("Type of Variable");
         searchStruct.type = (ExTypes)EditorGUILayout.EnumPopup(searchStruct.type);
-
+        FindThisVariable();
     }
 
-    void FindThisVariable(string variable, ExTypes type)
+    void FindThisVariable()
     {
+        string variable = searchStruct.query;
+        ExTypes type = searchStruct.type;
         switch (type)
         {
             case ExTypes.Bool: FindBoolVariable(variable); break;

@@ -94,6 +94,11 @@ public class AchievementEditor : EditorWindow {
         FindThisVariable();
     }
 
+    void AddTaskRenderer()
+    {
+        EditorGUILayout.LabelField("Task Name");
+    }
+
     void FindThisVariable()
     {
         string variable = searchStruct.query;
@@ -348,4 +353,15 @@ public struct SearchStruct
 {
     public string query;
     public ExTypes type;
+}
+
+public struct TaskBuilderStruct
+{
+    public string taskName;
+    public string valueToCheck;
+    public ExTypes valueType;
+    public float expected_float;
+    public bool expected_bool;
+    public int expected_int;
+    public Comparors compareType;
 }

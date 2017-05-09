@@ -12,6 +12,7 @@ public class Task {
     public string uniqueId;
     public string Title;
     public string description;
+    public string variableToCompare;
     public TaskState state;
     public Comparors comparor;
     public ExTypes exType;
@@ -32,7 +33,26 @@ public class Task {
     {
         if(exType == ExTypes.Float)
         {
-            
+            float currentValue;
+            if(AchieveBase.GetFloat(variableToCompare,out currentValue))
+            {
+                switch (comparor)
+                {
+                    case Comparors.greaterThan:
+                            if(currentValue > value_float)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                    case Comparors.lessThan:
+                        if(currentValue < value_float)
+                        {
+
+                        }
+                        break;
+                }
+            }
         }else if(exType == ExTypes.Int) 
         {
 

@@ -44,7 +44,7 @@ public class ExVariable<T>: BaseVariable{
         _value = permenantValue;
         if(onValueChange != null)
         {
-
+            onValueChange();
         }
     }
 

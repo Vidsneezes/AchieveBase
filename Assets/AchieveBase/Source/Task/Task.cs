@@ -8,13 +8,17 @@ public enum TaskState
     CLEARED
 }
 
-public class Task<T>  {
+public class Task {
     public string uniqueId;
     public string Title;
     public string description;
     public TaskState state;
-    public ConditionBuilder<T> conditionBuilder;
-    private IGeneralCondition generalCondition;
+    public Comparors comparor;
+    public ExTypes exType;
+
+    private float value_float;
+    private bool value_bool;
+    private int value_int;
 
     public Task(string _title, string _uniqueId, string _description)
     {
@@ -22,23 +26,17 @@ public class Task<T>  {
         uniqueId = _uniqueId;
         description = _description;
         state = TaskState.LOCKED;
-        conditionBuilder = new ConditionBuilder<T>();
     }
 
     public void ClearConditionChecked()
     {
-        if(conditionBuilder.exType == ExTypes.Float)
+        if(exType == ExTypes.Float)
         {
-            generalCondition = new FloatCondition();
-        }else if(conditionBuilder.exType == ExTypes.Int) 
+            
+        }else if(exType == ExTypes.Int) 
         {
-            generalCondition = new BoolCondition();
-        }else if(conditionBuilder.exType == ExTypes.Bool)
-        {
-            generalCondition = new IntCondition();
-        }
-        //here call variable database and check value against task condition
-        if (generalCondition.ConditionMet())
+
+        }else if(exType == ExTypes.Bool)
         {
 
         }
@@ -47,51 +45,10 @@ public class Task<T>  {
     public void SubsrcibeToVariable()
     {
         //Call variable database here
-        ExVariable<T> variableTo = new ExVariable<T>();//delete this and us a call method
+        ExBool variableTo = new ExBool(false);//delete this and us a call method
         variableTo.SubscribeAction(ClearConditionChecked);
     }
 }
-
-public class ConditionBuilder<T>
-{
-    public string valueToCheck;
-    public Comparors compareType;
-    public ExVariable<T> expectedValue;
-    public ExTypes exType;
-}
-
-public interface IGeneralCondition
-{
-    bool ConditionMet();
-}
-
-public class FloatCondition : IGeneralCondition
-{
-    ConditionBuilder<float> taskCondition;
-    public bool ConditionMet()
-    {
-        return false;
-    }
-}
-
-public class BoolCondition : IGeneralCondition
-{
-    ConditionBuilder<float> taskCondition;
-    public bool ConditionMet()
-    {
-        return false;
-    }
-}
-
-public class IntCondition : IGeneralCondition
-{
-    ConditionBuilder<float> taskCondition;
-    public bool ConditionMet()
-    {
-        return false;
-    }
-}
-
 
 public enum Comparors
 {

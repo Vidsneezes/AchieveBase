@@ -371,3 +371,8 @@ public struct SearchStruct
     public ExTypes type;
 }
 
+public struct TaskDataStruct
+{
+    public List<Task> task;
+}
+

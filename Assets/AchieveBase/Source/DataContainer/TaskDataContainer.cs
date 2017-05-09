@@ -6,5 +6,4 @@ using UnityEngine;
 public class TaskDataContainer : ScriptableObject
 {
     public List<Task> task;
-	
 }

@@ -36,8 +36,9 @@ public class AchievementEditor : EditorWindow {
     private bool tempBool;
     private float tempFloat;
     private int tempInt;
-    private VariableDataContainer variableDataContiner;
+    private VariableDataContainer variableDataContainer;
     private VariableContainerStruct variableContainerStruct;
+    private TaskDataContainer taskDataContainer;
     private SearchStruct searchStruct;
     private bool boolDisplay;
     private bool intDisplay;
@@ -53,24 +54,35 @@ public class AchievementEditor : EditorWindow {
 
     void OnGUI()
     {
-        if(variableDataContiner == null)
+        if(taskDataContainer == null)
         {
-            variableDataContiner = AssetDatabase.LoadAssetAtPath<VariableDataContainer>("Assets/__VariableDatabase.asset");
-            if (variableDataContiner == null)
+            taskDataContainer = AssetDatabase.LoadAssetAtPath<TaskDataContainer>("Assets/__TaskDatabase.asset");
+            if(taskDataContainer == null)
             {
-                variableDataContiner = (VariableDataContainer)ScriptableObject.CreateInstance(typeof(VariableDataContainer));
-
-                AssetDatabase.CreateAsset(variableDataContiner, "Assets/__VariableDatabase.asset");
+                taskDataContainer = (TaskDataContainer)ScriptableObject.CreateInstance(typeof(TaskDataContainer));
+                AssetDatabase.CreateAsset(taskDataContainer, "Assets/__TaskDatabase.asset");
                 AssetDatabase.SaveAssets();
-                variableContainerStruct.bools = new List<ExBool>(variableDataContiner.bools.ToArray() );
-                variableContainerStruct.ints = new List<ExInt>(variableDataContiner.ints.ToArray()); 
-                variableContainerStruct.floats = new List<ExFloat>(variableDataContiner.floats.ToArray());
+            }
+        }
+
+        if(variableDataContainer == null)
+        {
+            variableDataContainer = AssetDatabase.LoadAssetAtPath<VariableDataContainer>("Assets/__VariableDatabase.asset");
+            if (variableDataContainer == null)
+            {
+                variableDataContainer = (VariableDataContainer)ScriptableObject.CreateInstance(typeof(VariableDataContainer));
+
+                AssetDatabase.CreateAsset(variableDataContainer, "Assets/__VariableDatabase.asset");
+                AssetDatabase.SaveAssets();
+                variableContainerStruct.bools = new List<ExBool>(variableDataContainer.bools.ToArray() );
+                variableContainerStruct.ints = new List<ExInt>(variableDataContainer.ints.ToArray()); 
+                variableContainerStruct.floats = new List<ExFloat>(variableDataContainer.floats.ToArray());
             }
             else
             {
-                variableContainerStruct.bools = new List<ExBool>(variableDataContiner.bools.ToArray());
-                variableContainerStruct.ints = new List<ExInt>(variableDataContiner.ints.ToArray());
-                variableContainerStruct.floats = new List<ExFloat>(variableDataContiner.floats.ToArray());
+                variableContainerStruct.bools = new List<ExBool>(variableDataContainer.bools.ToArray());
+                variableContainerStruct.ints = new List<ExInt>(variableDataContainer.ints.ToArray());
+                variableContainerStruct.floats = new List<ExFloat>(variableDataContainer.floats.ToArray());
             }
 
         }
@@ -190,7 +202,7 @@ public class AchievementEditor : EditorWindow {
             exVraibleStruct.float_start = 0;
             this.Repaint();
             AssetDatabase.Refresh();
-            EditorUtility.SetDirty(variableDataContiner);
+            EditorUtility.SetDirty(variableDataContainer);
             AssetDatabase.SaveAssets();
 
         }
@@ -202,15 +214,15 @@ public class AchievementEditor : EditorWindow {
         {
             case ExTypes.Bool:
                 SaveBool();
-                variableDataContiner.bools = variableContainerStruct.bools;
+                variableDataContainer.bools = variableContainerStruct.bools;
                 break;
             case ExTypes.Float:
                 SaveFloat();
-                variableDataContiner.floats = variableContainerStruct.floats;
+                variableDataContainer.floats = variableContainerStruct.floats;
                 break;
             case ExTypes.Int:
                 SaveInt();
-                variableDataContiner.ints = variableContainerStruct.ints;
+                variableDataContainer.ints = variableContainerStruct.ints;
                 break;
         }
     }
@@ -260,7 +272,7 @@ public class AchievementEditor : EditorWindow {
         if (GUILayout.Button("Save Task"))
         {
             AssetDatabase.Refresh();
-            EditorUtility.SetDirty(variableDataContiner);
+            EditorUtility.SetDirty(variableDataContainer);
             AssetDatabase.SaveAssets();
 
         }

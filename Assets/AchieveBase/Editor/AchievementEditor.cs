@@ -77,6 +77,7 @@ public class AchievementEditor : EditorWindow {
         VariableViewRenderer();
         AddNewVariableRenderer();
         SearchVariableRenderer();
+        AddTaskRenderer();
     }
 
     public void OnInspectorUpdate()
@@ -92,11 +93,6 @@ public class AchievementEditor : EditorWindow {
         EditorGUILayout.LabelField("Type of Variable");
         searchStruct.type = (ExTypes)EditorGUILayout.EnumPopup(searchStruct.type);
         FindThisVariable();
-    }
-
-    void AddTaskRenderer()
-    {
-        EditorGUILayout.LabelField("Task Name");
     }
 
     void FindThisVariable()
@@ -249,7 +245,7 @@ public class AchievementEditor : EditorWindow {
         }
     }
 
-    void TaskRenderer()
+    void AddTaskRenderer()
     {
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Title ");
@@ -260,6 +256,14 @@ public class AchievementEditor : EditorWindow {
         taskBaseStruct.variableTypeCheck = (ExTypes)EditorGUILayout.EnumPopup(taskBaseStruct.variableTypeCheck);
         EditorGUILayout.LabelField("Check Condition");
         ConditionRenderer();
+
+        if (GUILayout.Button("Save Task"))
+        {
+            AssetDatabase.Refresh();
+            EditorUtility.SetDirty(variableDataContiner);
+            AssetDatabase.SaveAssets();
+
+        }
     }
 
     void ConditionRenderer()
@@ -355,13 +359,3 @@ public struct SearchStruct
     public ExTypes type;
 }
 
-public struct TaskBuilderStruct
-{
-    public string taskName;
-    public string valueToCheck;
-    public ExTypes valueType;
-    public float expected_float;
-    public bool expected_bool;
-    public int expected_int;
-    public Comparors compareType;
-}

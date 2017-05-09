@@ -105,7 +105,27 @@ public class Task {
         }
         else if(exType == ExTypes.Bool)
         {
-
+            bool currentValue;
+            if (AchieveBase.GetBool(variableToCompare, out currentValue))
+            {
+                switch (comparor)
+                {
+                    case Comparors.notEqual:
+                        if (currentValue != value_bool)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                    case Comparors.equal:
+                        if (currentValue == value_bool)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                }
+            }
         }
     }
 

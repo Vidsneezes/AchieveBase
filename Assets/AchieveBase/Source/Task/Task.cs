@@ -55,8 +55,55 @@ public class Task {
             }
         }else if(exType == ExTypes.Int) 
         {
+            int currentValue;
+            if (AchieveBase.GetInt(variableToCompare, out currentValue))
+            {
+                switch (comparor)
+                {
+                    case Comparors.notEqual:
+                        if (currentValue != value_int)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                    case Comparors.equal:
+                        if (currentValue == value_int)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                    case Comparors.lessThan:
+                        if (currentValue < value_int)
+                        {
 
-        }else if(exType == ExTypes.Bool)
+                        }
+                        break;
+                    case Comparors.greaterThan:
+                        if (currentValue > value_int)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                    case Comparors.greaterOrEqualThan:
+                        if (currentValue >= value_int)
+                        {
+                            //Call Task base to handle on completed
+                            //Remove Task
+                        }
+                        break;
+                    case Comparors.lessOrEqualThan:
+                        if (currentValue <= value_int)
+                        {
+
+                        }
+                        break;
+                }
+            }
+        }
+        else if(exType == ExTypes.Bool)
         {
 
         }

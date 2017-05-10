@@ -11,3 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5636e6aac31fa44bd21841e180e9b7, type: 3}
   m_Name: __TaskDatabase
   m_EditorClassIdentifier: 
+  task:
+  - uniqueId: 903
+    Title: 1000 points
+    description: get 1000 points
+    variableToCompare: points
+    state: 2
+    comparor: 0
+    exType: 0

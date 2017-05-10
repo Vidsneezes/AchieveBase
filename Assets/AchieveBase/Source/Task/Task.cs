@@ -8,6 +8,7 @@ public enum TaskState
     CLEARED
 }
 
+[System.Serializable]
 public class Task {
     public string uniqueId;
     public string Title;
